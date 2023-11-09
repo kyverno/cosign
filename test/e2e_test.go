@@ -421,19 +421,12 @@ func TestExcessiveAttestations(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		// Attest to create a vuln attestation
-		attestCommand := attest.AttestCommand{
-			KeyOpts:       ko,
-			PredicatePath: vulnAttestationPath,
-			PredicateType: "vuln",
-			Timeout:       30 * time.Second,
-			Replace:       false,
-		}
-		must(attestCommand.Exec(ctx, imgName), t)
+		// Attest again with replace=true, replacing the previous attestation
+		must(attest.AttestCmd(ctx, ko, options.RegistryOptions{}, imgName, "", "", false, vulnAttestationPath, false,
+			"vuln", false, 30*time.Second, false), t)
 	}
 
-	attOpts := options.AttestationDownloadOptions{}
-	_, err = cosign.FetchAttestationsForReference(ctx, ref, attOpts.PredicateType, ociremoteOpts...)
+	_, err = cosign.FetchAttestationsForReference(ctx, ref, ociremoteOpts...)
 	if err == nil {
 		t.Fatalf("Expected an error, but 'err' was 'nil'")
 	}
@@ -604,9 +597,6 @@ func TestExcessiveSignatures(t *testing.T) {
 
 		// Sign the image
 		ko := options.KeyOpts{KeyRef: privKeyPath, PassFunc: passFunc}
-		so := options.SignOptions{
-			Upload: true,
-		}
 		must(sign.SignCmd(ro, ko, options.RegistryOptions{}, nil, []string{imgName}, "", "", true, "", "", "", false, false, "", false), t)
 	}
 	err := download.SignatureCmd(ctx, options.RegistryOptions{}, imgName)
