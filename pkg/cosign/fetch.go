@@ -137,7 +137,7 @@ func FetchAttestationsForReference(ctx context.Context, ref name.Reference, opts
 	}
 
 	if len(l) > maxAllowedSigsOrAtts {
-		return nil, fmt.Errorf("maximum number of signatures on an image is %d, found %d", maxAllowedSigsOrAtts, len(l))
+		return nil, fmt.Errorf("maximum number of attestations on an image is %d, found %d", maxAllowedSigsOrAtts, len(l))
 	}
 
 	attestations := make([]AttestationPayload, len(l))
