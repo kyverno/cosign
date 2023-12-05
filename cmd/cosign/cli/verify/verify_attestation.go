@@ -31,10 +31,8 @@ import (
 	"github.com/sigstore/cosign/v2/internal/pkg/cosign/tsa"
 	"github.com/sigstore/cosign/v2/internal/ui"
 	"github.com/sigstore/cosign/v2/pkg/cosign"
-	"github.com/sigstore/cosign/v2/pkg/cosign/cue"
 	"github.com/sigstore/cosign/v2/pkg/cosign/pivkey"
 	"github.com/sigstore/cosign/v2/pkg/cosign/pkcs11key"
-	"github.com/sigstore/cosign/v2/pkg/cosign/rego"
 	"github.com/sigstore/cosign/v2/pkg/oci"
 	"github.com/sigstore/cosign/v2/pkg/policy"
 	sigs "github.com/sigstore/cosign/v2/pkg/signature"
@@ -287,24 +285,6 @@ func (c *VerifyAttestationCommand) Exec(ctx context.Context, images []string) (e
 			if len(payload) == 0 {
 				// This is not the predicate type we're looking for.
 				continue
-			}
-
-			if len(cuePolicies) > 0 {
-				ui.Infof(ctx, "will be validating against CUE policies: %v", cuePolicies)
-				cueValidationErr := cue.ValidateJSON(payload, cuePolicies)
-				if cueValidationErr != nil {
-					validationErrors = append(validationErrors, cueValidationErr)
-					continue
-				}
-			}
-
-			if len(regoPolicies) > 0 {
-				ui.Infof(ctx, "will be validating against Rego policies: %v", regoPolicies)
-				regoValidationErrs := rego.ValidateJSON(payload, regoPolicies)
-				if len(regoValidationErrs) > 0 {
-					validationErrors = append(validationErrors, regoValidationErrs...)
-					continue
-				}
 			}
 
 			checked = append(checked, vp)
