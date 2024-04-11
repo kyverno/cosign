@@ -16,7 +16,7 @@ require (
 	github.com/go-openapi/strfmt v0.23.0
 	github.com/go-openapi/swag v0.23.0
 	github.com/go-piv/piv-go v1.11.0
-	github.com/google/certificate-transparency-go v1.1.8
+	github.com/google/certificate-transparency-go v1.1.7
 	github.com/google/go-cmp v0.6.0
 	github.com/google/go-containerregistry v0.19.1
 	github.com/google/go-github/v55 v55.0.0
@@ -28,11 +28,11 @@ require (
 	github.com/moby/term v0.5.0
 	github.com/mozillazg/docker-credential-acr-helper v0.3.0
 	github.com/nozzle/throttler v0.0.0-20180817012639-2ea982251481
-	github.com/open-policy-agent/opa v0.63.0
+	github.com/open-policy-agent/opa v0.61.0
 	github.com/pkg/errors v0.9.1
 	github.com/secure-systems-lab/go-securesystemslib v0.8.0
-	github.com/sigstore/fulcio v1.4.5
-	github.com/sigstore/rekor v1.3.6
+	github.com/sigstore/fulcio v1.4.3
+	github.com/sigstore/rekor v1.3.5
 	github.com/sigstore/sigstore v1.8.3
 	github.com/sigstore/sigstore/pkg/signature/kms/aws v1.8.3
 	github.com/sigstore/sigstore/pkg/signature/kms/azure v1.8.3
@@ -209,9 +209,9 @@ require (
 	github.com/pelletier/go-toml/v2 v2.1.0 // indirect
 	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/prometheus/client_golang v1.19.0 // indirect
+	github.com/prometheus/client_golang v1.18.0 // indirect
 	github.com/prometheus/client_model v0.6.0 // indirect
-	github.com/prometheus/common v0.51.1 // indirect
+	github.com/prometheus/common v0.47.0 // indirect
 	github.com/prometheus/procfs v0.12.0 // indirect
 	github.com/protocolbuffers/txtpbfmt v0.0.0-20231025115547-084445ff1adf // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
